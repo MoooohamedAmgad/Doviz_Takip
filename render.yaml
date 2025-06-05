@@ -38,3 +38,8 @@ databases:
   - name: laravel-db
     plan: free
     mysqlVersion: 8
+
+buildCommand: |
+  composer install --no-dev --optimize-autoloader
+  php artisan key:generate
+  php artisan migrate --force
