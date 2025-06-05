@@ -9,37 +9,28 @@ services:
     envVars:
       - key: APP_ENV
         value: production
-      - key: APP_KEY
-        generateValue: true
       - key: APP_DEBUG
-        value: false
+        value: true
+      - key: APP_KEY
+        value: base64:Rb65g2he5jTvZ+M+H4vQSRfSbXoDG9nmo/jcPmd1SRI=
+      - key: APP_NAME
+        value: Laravel
+      - key: APP_URL
+        value: https://doviz-takip.onrender.com/
       - key: DB_CONNECTION
-        value: mysql
+        value: pgsql
       - key: DB_HOST
-        fromDatabase:
-          name: laravel-db
-          property: host
+        value: dpg-d10fprripnbc738pm320-a
       - key: DB_PORT
-        value: 3306
+        value: 5432
       - key: DB_DATABASE
-        fromDatabase:
-          name: laravel-db
-          property: database
+        value: doviz_mysql
       - key: DB_USERNAME
-        fromDatabase:
-          name: laravel-db
-          property: user
+        value: doviz_mysql_user
       - key: DB_PASSWORD
-        fromDatabase:
-          name: laravel-db
-          property: password
+        value: H9ui7RHeO7kZhslK4Xxa0bc8sTYrmfYG
 
 databases:
-  - name: laravel-db
+  - name: doviz_mysql
     plan: free
-    mysqlVersion: 8
-
-buildCommand: |
-  composer install --no-dev --optimize-autoloader
-  php artisan key:generate
-  php artisan migrate --force
+    postgresVersion: 16
